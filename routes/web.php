@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MyController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,3 +38,16 @@ Route::get('/search/{keyword?}', function ($key = null) {
 Route::get('/promo/{barang?}/{kode?}', function ($barang = null, $kode = null ) {
     return view('promo', compact('barang', 'kode'));
 });
+
+//route untuk controller MyController
+Route::get('buku', [MyController::class, 'index'])->name('buku.index');
+//create buku
+Route::get('buku/create', [MyController::class, 'create'])->name('buku.create');
+Route::post('buku', [MyController::class, 'store']);
+//show buku
+Route::get('buku/{id}', [MyController::class, 'show'])->name('buku.show');
+//edit buku
+Route::get('buku/{id}/edit', [MyController::class, 'edit'])->name('buku.edit');
+Route::put('buku/{id}', [MyController::class, 'update'])->name('buku.update');
+//destroy
+Route::delete('buku/{id}', [MyController::class, 'destroy']);
