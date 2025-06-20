@@ -38,7 +38,7 @@ class ProductSeeder extends Seeder
         ]);
 
         \App\Models\Product::create([
-            'category_id' => 3,
+            'category_id' => 2,
             'name'=>'Laptop axxio',
             'slug'=>'axxio-laptop',
             'description'=>'Laptop gaming 3000 an',
