@@ -25,6 +25,18 @@ class Product extends Model
         return $this->hasMany(Cart::class);
     }
 
+    public function review()
+
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function orders() 
+    {
+        return $this->belongsToMany(Order::class)->withPivot('qty','price')
+                    ->withTimestamps();
+    }
+
 
 
 }

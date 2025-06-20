@@ -11,7 +11,7 @@ class Cart extends Model
 
 
     //relasi user dan product
-    
+
     public function user()
     {
         return $this->belongsTo(User :: class);
@@ -19,7 +19,7 @@ class Cart extends Model
 
     public function product()
     {
-        return $this->belongsTo(product :: class);
+        return $this->belongsTo(Product :: class);
     }
 
 
