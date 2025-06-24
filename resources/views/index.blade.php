@@ -22,9 +22,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 herobanner__img__side">
-                            <div class="herobanner__img">
-                                <img src="{{asset('assets/frontend/img/herobanner/main_herobanner__2.png')}}" alt="">
+                        <div class="pt-5 col-xl-6 col-lg-6 col-md-6 col-12 herobanner__img__side">
+                            <div class="herobanner__img" style="max-width: 400px; margin: 0 auto;">
+                                <img src="{{asset('assets/frontend/img/herobanner/main_herobanner__2.png')}}" alt="" style="width: 100%; height: auto;">
                             </div>
                         </div>
                     </div>
@@ -45,8 +45,8 @@
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 herobanner__img__side">
-                            <div class="herobanner__img">
-                                <img src="{{asset('assets/frontend/img/herobanner/main_herobanner__1.png')}}" alt="">
+                          <div class="herobanner__img" style="max-width: 400px; margin: 0 auto;">
+                                <img src="{{asset('assets/frontend/img/herobanner/main_herobanner__2.png')}}" alt="" style="width: 100%; height: auto;">
                             </div>
                         </div>
                     </div>
@@ -67,8 +67,8 @@
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 herobanner__img__side">
-                            <div class="herobanner__img">
-                                <img src="{{asset('assets/frontend/img/herobanner/main_herobanner__3.png')}}" alt="">
+                            <div class="herobanner__img" style="max-width: 400px; margin: 0 auto;">
+                                <img src="{{asset('assets/frontend/img/herobanner/main_herobanner__2.png')}}" alt="" style="width: 100%; height: auto;">
                             </div>
                         </div>
                     </div>
@@ -79,6 +79,7 @@
         </div>
     </div>
 </div>
+<br>
 <!-- herobanner__end -->
 
 
@@ -122,12 +123,14 @@
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
                         <div class="grid__wraper">
                             <div class="grid__wraper__img">
-                                <div class="grid__wraper__img__inner">
+                                <div class="grid__wraper__img__inner" style="width: 100%; aspect-ratio: 1/1; overflow: hidden;">
                                     <a href="/product/{{ $data->slug }}">
                                         <img class="primary__image" src="{{ Storage::url($data->image) }}"
-                                            alt="Primary Image">
+                                            alt="Primary Image"
+                                            style="width: 100%; height: 100%; object-fit: cover;"/>
                                         <img class="secondary__image" src="{{Storage::url($data->image)}}"
-                                            alt="Secondary Image">
+                                            alt="Secondary Image"
+                                            style="width: 100%; height: 100%; object-fit: cover; position: absolute; left: 0; top: 0;"/>
                                     </a>
                                 </div>
                                 <div class="grid__wraper__icon">
