@@ -62,17 +62,25 @@ Auth::routes();
 
 //Route tamu atau member
 Route::get('/', [FrontendController::class,'index']);
-Route::get('/product', [FrontendController::class, 'product']);
-Route::get('/product/{product}', [FrontendController::class , 'singleProduct']);
+Route::get('/product', [FrontendController::class, 'product'])->name('product.index');
+Route::get('/product/{product}', [FrontendController::class , 'singleProduct'])
+    ->name('product.show');
+Route::get('/product/category/{slug}', [FrontendController::class, 'filterByCategory'])
+    ->name('product.filter');
+Route::get('/search', [FrontendController::class, 'search'])->name('product.search');
 Route::get('/about', [FrontendController::class, 'about'])->name('about'); 
 Route::get('/cart', [FrontendController::class, 'cart']); 
-
+Route::post('/add-to-cart/{product}', [App\Http\Controllers\CartController::class, 'addToCart'])
+    ->name('cart.add');
+Route::put('/cart/update/{id}', [App\Http\Controllers\CartController::class, 'updateCart'])
+    ->name('cart.update');
+Route::delete('/cart/delete/{id}', [App\Http\Controllers\CartController::class, 'deleteCart']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
 //Route untuk admin
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', Admin::class]], function () {
+Route::group(['prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', Admin::class]], function () {
     Route::get('/', [BackendController::class, 'index']);
     // crud
 

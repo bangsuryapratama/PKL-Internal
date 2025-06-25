@@ -1,4 +1,3 @@
-
 @extends('layouts.backend')
 @section('styles')
 <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.bootstrap5.css">
@@ -11,7 +10,7 @@
                 <div class="card">
                     <div class="card-header bg-secondary">
                         Data Produk
-                        <a href="{{route ('product.create')}}" class="btn btn-info btn-sm" style="color: white;float: right;">
+                        <a href="{{route ('backend.product.create')}}" class="btn btn-info btn-sm" style="color: white;float: right;">
                             Tambah
                         </a>
                     </div>
@@ -48,9 +47,9 @@
                                         </td>
                                         <td>{{$data->description}}</td>
                                         <td width="300px">
-                                            <a href="{{route ('product.edit', $data->id)}}" class="btn btn-sm btn-warning">Edit</a> |
-                                            <a href="{{route ('product.show', $data->id)}}" class="btn btn-sm btn-secondary">Show</a> |
-                                            <a href="{{route ('product.destroy', $data->id)}}" class="btn btn-sm btn-danger" data-confirm-delete=true>Hapus</a>
+                                            <a href="{{route ('backend.product.edit', $data->id)}}" class="btn btn-sm btn-warning">Edit</a> |
+                                            <a href="{{route ('backend.product.show', $data->id)}}" class="btn btn-sm btn-secondary">Show</a> |
+                                            <a href="{{route ('backend.product.destroy', $data->id)}}" class="btn btn-sm btn-danger" data-confirm-delete=true>Hapus</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -65,9 +64,9 @@
 @endsection
 
 @push('scripts')
-    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js "></script>
-    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
-    <script>
-        new DataTable(#dataproduct);
-    </script>
+<script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
+<script>
+    new DataTable('#dataCategory');
+</script>
 @endpush

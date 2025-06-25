@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -34,5 +35,31 @@ class FrontendController extends Controller
         return view('cart');
     }
 
+    public function filterByCategory($slug)
+    {
+        $category = Category::all();
+        $selectedCategory = Category::where('slug', $slug)->firstOrFail();
+        $product = Product::where('category_id', $selectedCategory->id);
 
+        return view('product', compact('product','category', 'selectedCategory'));
+    }
+
+    public function search()
+    {
+        $query = request('q');
+
+         $product = Product::where('name', 'like', '%' . $query . '%')
+        ->orWhere('description', 'like', '%' . $query . '%')
+        ->orWhereHas('category', function ($q) use ($query) {
+            $q->where('name', 'like', '%' . $query . '%');
+        })
+        ->latest()
+        ->get();
+
+        $category = Category::all();
+        $selectedCategory = null;
+
+        return view('product', compact('product', 'category', 'selectedCategory'));
+
+    }
 }

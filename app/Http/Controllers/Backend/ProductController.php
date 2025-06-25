@@ -30,7 +30,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // validasi
-        $validated = $request->validate([
+        $request->validate([
             'name'        => 'required|unique:categories',
             'category_id' => 'required',
             'price'       => 'required|numeric',
@@ -57,7 +57,7 @@ class ProductController extends Controller
 
         $product->save();
         toast('Data berhasil disimpan', 'success');
-        return redirect()->route('product.index');
+        return redirect()->route('backend.product.index');
     }
 
     public function show(string $id)
@@ -76,7 +76,7 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         // validasi
-        $validated = $request->validate([
+        $request->validate([
             'name'        => 'required|unique:categories',
             'category_id' => 'required',
             'price'       => 'required|numeric',
@@ -107,7 +107,7 @@ class ProductController extends Controller
 
         $product->save();
         toast('Data berhasil disimpan', 'success');
-        return redirect()->route('product.index');
+        return redirect()->route('backend.product.index');
 
     }
 
@@ -117,6 +117,6 @@ class ProductController extends Controller
         Storage::disk('public')->delete($product->image);
         $product->delete();
         toast('Data berhasil dihapus', 'success');
-        return redirect()->route('product.index');
+        return redirect()->route('backend.product.index');
     }
 }

@@ -25,7 +25,7 @@ class Product extends Model
         return $this->hasMany(Cart::class);
     }
 
-    public function review()
+    public function reviews()
 
     {
         return $this->hasMany(Review::class);
@@ -35,6 +35,11 @@ class Product extends Model
     {
         return $this->belongsToMany(Order::class)->withPivot('qty','price')
                     ->withTimestamps();
+    }
+
+    public function getRouteKey()
+    {
+        return 'slug';
     }
 
 
