@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\BackendController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Admin;
@@ -76,6 +77,11 @@ Route::put('/cart/update/{id}', [App\Http\Controllers\CartController::class, 'up
     ->name('cart.update');
 Route::delete('/cart/delete/{id}', [App\Http\Controllers\CartController::class, 'deleteCart']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+
 
 
 

@@ -22,7 +22,8 @@ class FrontendController extends Controller
 
     public function product(){
         $product = Product::latest()->get();
-        return view('product', compact('product'));
+        $category = Category::all();
+        return view('product', compact('product' , 'category'));
     }
 
     public function singleProduct(Product $product)
@@ -35,13 +36,13 @@ class FrontendController extends Controller
         return view('cart');
     }
 
-    public function filterByCategory($slug)
+     public function filterByCategory($slug)
     {
-        $category = Category::all();
+        $category         = Category::all();
         $selectedCategory = Category::where('slug', $slug)->firstOrFail();
-        $product = Product::where('category_id', $selectedCategory->id);
+        $product          = Product::where('category_id', $selectedCategory->id)->latest()->get();
 
-        return view('product', compact('product','category', 'selectedCategory'));
+        return view('product', compact('product', 'category', 'selectedCategory'));
     }
 
     public function search()
