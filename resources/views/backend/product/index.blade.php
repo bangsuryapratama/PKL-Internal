@@ -47,10 +47,15 @@
                                         </td>
                                         <td>{{$data->description}}</td>
                                         <td width="300px">
-                                            <a href="{{route ('backend.product.edit', $data->id)}}" class="btn btn-sm btn-warning">Edit</a> |
-                                            <a href="{{route ('backend.product.show', $data->id)}}" class="btn btn-sm btn-secondary">Show</a> |
-                                            <a href="{{route ('backend.product.destroy', $data->id)}}" class="btn btn-sm btn-danger" data-confirm-delete=true>Hapus</a>
-                                        </td>
+                                        <a href="{{ route('backend.product.edit', $data->id) }}" class="btn btn-sm btn-warning">Edit</a> |
+                                        <a href="{{ route('backend.product.show', $data->id) }}" class="btn btn-sm btn-secondary">Show</a> |
+                                        <form action="{{ route('backend.product.destroy', $data->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                        </form>
+                                    </td>
+
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -67,6 +72,6 @@
 <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
 <script>
-    new DataTable('#dataCategory');
+    new DataTable('#dataProduct');
 </script>
 @endpush

@@ -38,7 +38,7 @@
             </div>
 
             @php
-                $total = $cartItems->sum(fn($item) => $item->qty * $item->product->price);
+                $total = collect($cartItems)->sum(fn($item) => $item->qty * $item->product->price);
             @endphp
 
             <div class="minicart__footer">

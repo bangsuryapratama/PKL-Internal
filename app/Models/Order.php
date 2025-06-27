@@ -10,7 +10,7 @@ class Order extends Model
 
     public $fillable = ['user_id','order_code','total_price','status'];
 
-     public function producst() 
+     public function products() 
     {
         return $this->belongsToMany(Product::class)->withPivot('qty','price')
                     ->withTimestamps();

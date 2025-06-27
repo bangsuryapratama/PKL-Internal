@@ -146,12 +146,12 @@
                                             </span>
                                         </li>
 
-                                        <li>
-                                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        {{-- <li>
+                                            <a href="{{ Route() }}" data-bs-toggle="tooltip" data-bs-placement="top"
                                                 title="Add To Cart" data-bs-original-title="Add To Cart">
                                                 <i class="fas fa-shopping-cart"></i>
                                             </a>
-                                        </li>
+                                        </li> --}}
 
                                     </ul>
                                 </div>

@@ -111,7 +111,26 @@ class CartController extends Controller
         Cart::where('user_id', Auth::id())->delete();
 
         toast('Pesanan berhasil dibuat!', 'success');
-        return redirect()->route('orders.index');
+        return redirect()->route('order.index');
     }
+
+    public function showCheckoutPage()
+{
+    $cartItems = Cart::with('product')
+        ->where('user_id', Auth::id())
+        ->get();
+
+    if ($cartItems->isEmpty()) {
+        toast('Keranjang kosong. Tidak bisa checkout.', 'warning');
+        return redirect()->route('cart.index');
+    }
+
+    $total = $cartItems->sum(function ($item) {
+        return $item->qty * $item->product->price;
+    });
+
+    return view('checkout', compact('cartItems', 'total'));
+}
+
 
 }

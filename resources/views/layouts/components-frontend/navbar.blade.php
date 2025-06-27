@@ -75,7 +75,7 @@
                                                 <path d="M160 288h249.44a8 8 0 007.85-6.43l28.8-144a8 8 0 00-7.85-9.57H128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
                                             </svg>
                                             <span class="bigcounter">
-                                                {{ $cartItems->count() }}
+                                                 {{ count($cartItems) }}
                                             </span>
 
 
@@ -165,7 +165,7 @@
                                                 <path d="M160 288h249.44a8 8 0 007.85-6.43l28.8-144a8 8 0 00-7.85-9.57H128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
                                             </svg>
                                             <span class=" bigcounter">
-                                                {{ $cartItems->count() }}
+                                                {{ count($cartItems) }}
                                             </span>
 
                                         </div>
@@ -283,7 +283,7 @@
                         <ul>
                             @auth
                             <li>
-                                <a href="#">My Orders</a>
+                              
                             </li>
                             <li>
                                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
