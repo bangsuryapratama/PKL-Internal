@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.backend')
 
 @section('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.bootstrap5.css">
@@ -44,8 +44,8 @@
                                         </td>
                                         <td>{{ $order->created_at->format('d M Y') }}</td>
                                         <td>
-                                            <a href="{{ route('order.show', $order->id) }}" class="btn btn-info btn-sm">Detail</a>
-                                            <form action="{{ route('order.destroy', $order->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus order ini?')">
+                                            <a href="{{ route('backend.orders.show', $order->id) }}" class="btn btn-info btn-sm">Detail</a>
+                                            <form action="{{ route('backend.orders.destroy', $order->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus order ini?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-sm">Hapus</button>

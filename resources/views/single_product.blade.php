@@ -114,8 +114,9 @@
                 <div class="border p-4 rounded shadow-sm">
                     <h5 class="mb-4">Tulis Ulasan Anda</h5>
                     @auth
-                    <form action="#" method="POST">
+                    <form action="{{ route('review.store') }}" method="POST">
                         @csrf
+                        @method('POST')
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                         <div class="mb-3">
                             <label for="point" class="form-label">Rating</label>
