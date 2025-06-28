@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 // Route user / guest
 Route::get('/', [FrontendController::class, 'index']);
 
-Route::get('/product', [FrontendController::class, 'product'])->name('product.index');
+Route::get('/product', [FrontendController::class, 'productList'])->name('product.index');
 Route::get('/product/{product}', [FrontendController::class, 'singleProduct'])->name('product.show');
 Route::get('/product/category/{slug}', [FrontendController::class, 'filterByCategory'])->name('product.filter');
 Route::get('/search', [FrontendController::class, 'search'])->name('product.search');
@@ -27,7 +27,7 @@ Route::put('/cart/update/{id}', [CartController::class, 'updateCart'])->name('ca
 Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
 // orders
-Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 

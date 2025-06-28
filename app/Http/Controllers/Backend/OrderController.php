@@ -26,9 +26,10 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $order = Order::findOrFail($id);
-        $order->detach();
+        $order->products()->detach();
+        $order->delete();
         toast('Pesanan berhasil dihapus', 'success');
-        return redirect()->route('backend.order.index');
+        return redirect()->route('backend.orders.index');
     }
 
     public function updateStatus($id, \Illuminate\Http\Request $request)
