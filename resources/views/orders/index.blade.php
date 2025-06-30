@@ -46,7 +46,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $order->order_code }}</td>
                                         <td>{{ number_format($order->total_price, 0, ',', '.') }}</td>
-                                        <td>
+                                            <td>
                                             @if ($order->status == 'pending')
                                                 <span class="badge bg-warning text-dark">Pending</span>
                                             @elseif ($order->status == 'success')

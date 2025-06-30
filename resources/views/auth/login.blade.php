@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('content')
 
@@ -94,30 +94,30 @@
 
 
 
-                            <form action="#">
-                                <div class="loginarea__form">
-                                    <label class="form__label">Username or email</label>
-                                    <input class="common__login__input" type="text" placeholder="Your username or email">
+                            <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="loginarea__form">
+                                <label class="form__label">Email</label>
+                                <input class="common__login__input" name="email" type="email" placeholder="Your email" required>
+                            </div>
+                            <div class="loginarea__form">
+                                <label class="form__label">Password</label>
+                                <input class="common__login__input" name="password" type="password" placeholder="Password" required>
+                            </div>
+                            <div class="loginarea__form d-flex justify-content-between flex-wrap gap-2">
+                                <div class="form__check">
+                                    <input type="checkbox" name="remember" id="login__privacy">
+                                    <label for="login__privacy">Remember Me</label>
+                                </div>
+                                <div class="text-end login__form__link">
+                                    <a href="{{ route('password.request') }}">Forgot your password?</a>
+                                </div>
+                            </div>
+                            <div class="loginarea__button text-center">
+                                <button class="default__button" type="submit">Log In</button>
+                            </div>
+                        </form>
 
-                                </div>
-                                <div class="loginarea__form">
-                                    <label class="form__label">Password</label>
-                                    <input class="common__login__input" type="password" placeholder="Password">
-
-                                </div>
-                                <div class="loginarea__form d-flex justify-content-between flex-wrap gap-2">
-                                    <div class="form__check">
-                                        <input type="checkbox" id="login__privacy">
-                                        <label for="login__privacy">Remember Me</label>
-                                    </div>
-                                    <div class="text-end login__form__link">
-                                        <a href="#">Forgot your password?</a>
-                                    </div>
-                                </div>
-                                <div class="loginarea__button text-center">
-                                    <a class="default__button" href="#">Log In</a>
-                                </div>
-                            </form>
 
                            
 
@@ -136,71 +136,54 @@
 
 
 
-                            <form action="#">
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
                                 <div class="row">
                                     <div class="col-xl-6">
                                         <div class="loginarea__form">
-                                            <label class="form__label">First Name</label>
-                                            <input class="common__login__input" type="text" placeholder="First Name">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="loginarea__form">
-                                            <label class="form__label">Last Name</label>
-                                            <input class="common__login__input" type="password" placeholder="Last Name">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="loginarea__form">
-                                            <label class="form__label">Username</label>
-                                            <input class="common__login__input" type="password" placeholder="Username">
-
+                                            <label class="form__label">Name</label>
+                                            <input class="common__login__input" type="text" name="name" placeholder="Your Name" required>
                                         </div>
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="loginarea__form">
                                             <label class="form__label">Email</label>
-                                            <input class="common__login__input" type="password" placeholder="Your Email">
-
+                                            <input class="common__login__input" type="email" name="email" placeholder="Your Email" required>
                                         </div>
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="loginarea__form">
                                             <label class="form__label">Password</label>
-                                            <input class="common__login__input" type="password" placeholder="Password">
-
+                                            <input class="common__login__input" type="password" name="password" placeholder="Password" required>
                                         </div>
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="loginarea__form">
-                                            <label class="form__label">Re-Enter Password</label>
-                                            <input class="common__login__input" type="password" placeholder="Re-Enter Password">
-
+                                            <label class="form__label">Confirm Password</label>
+                                            <input class="common__login__input" type="password" name="password_confirmation" placeholder="Confirm Password" required>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="loginarea__form d-flex justify-content-between flex-wrap gap-2">
                                     <div class="form__check">
-                                        <input type="checkbox" id="regi__privacy">
+                                        <input type="checkbox" id="regi__privacy" required>
                                         <label for="regi__privacy">Accept the Terms and Privacy Policy</label>
                                     </div>
-
                                 </div>
                                 <div class="login__button">
-                                    <a class="default__button text-center" href="#">Sign Up</a>
+                                    <button class="default__button text-center" type="submit">Sign Up</button>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-            </div>
-          </div>
-        </div>
-    </div>
-    </div>
-    
+
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                                
 
         </center>
 
