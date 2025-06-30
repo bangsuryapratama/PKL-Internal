@@ -11,8 +11,10 @@ class ProductController extends Controller
     
     public function index()
     {
-        $product = Product::select('id','name','slug','description','price','stock')
-        ->latest()->get();
+        $product = Product::select('products.id','products.name','products.slug','products.description','products.price','products.stock', 'categories.name as nama_kategori')
+        ->join('categories', 'products.category_id','=', 'categories.id')
+        ->orderBy('products.created_at', 'DESC')
+        ->get();
 
         $res = [
             'success' => true,
@@ -33,7 +35,18 @@ class ProductController extends Controller
                 'message' => 'Product not found',
             ];
             return response()->json($res, 404);
+
+            
         }
+         $res = [
+            'success' => true,
+            'message' => 'List Product',
+            'data' => $product,
+        ];
+
+            return response()->json($res, 200);
+
+        
 
     }
 
