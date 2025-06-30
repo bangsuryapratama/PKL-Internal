@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use Hash;
 
@@ -28,10 +28,11 @@ class AuthController extends Controller
         $user = User::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>$request->Hash::make($request->password),
+            'password' => Hash::make($request->password),
         ]);
 
         return response()->json([
+            'success' => 'true',
             'data' => $user,
             'message' =>'Akun berhasil dibuat mantap',
         ],201);
